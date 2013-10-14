@@ -1,1 +1,1 @@
-Search.setIndex({envversion:42,terms:{content:0,demo:0,hello:1,world:1},objtypes:{},objnames:{},filenames:["default","index"],titles:["Madeira Cloud Documentation","Demo"],objects:{},titleterms:{demo:1,document:0,madeira:0,cloud:0}})
+Search.setIndex({envversion:42,terms:{content:0,demo:[],hello:1,world:1},objtypes:{},objnames:{},filenames:["default","index"],titles:["Madeira Cloud Documentation","Demo"],objects:{},titleterms:{demo:1,document:0,madeira:0,cloud:0}})
