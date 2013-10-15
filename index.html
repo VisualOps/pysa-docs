@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Demo &mdash; MadeiraCloud Document 1.0.0 documentation</title>
+    <title>Pysa &mdash; Pysa 0.2.6a documentation</title>
     
     <link rel="stylesheet" href="_static/docs.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.0',
+        VERSION:     '0.2.6a',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="MadeiraCloud Document 1.0.0 documentation" href="#" />
+    <link rel="top" title="Pysa 0.2.6a documentation" href="#" />
     <link rel="prev" title="Madeira Cloud Documentation" href="default.html" /> 
   </head>
   <body>
@@ -40,7 +40,7 @@
           <li class="right" >
             <a href="default.html" title="Madeira Cloud Documentation"
                accesskey="P">previous</a> |</li>
-          <li><a href="default.html">MadeiraCloud Document 1.0.0 documentation</a> &raquo;</li> 
+          <li><a href="default.html">Pysa 0.2.6a documentation</a> &raquo;</li> 
         </ul>
       -->
     </div>  
@@ -50,12 +50,366 @@
         <div class="bodywrapper">
           <div class="body markdown-body">
             
-  <div class="section" id="demo">
-<h1>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div>Hello World !</div></blockquote>
-<div class="figure">
-<img alt="" src="img/free-bsd-512.png" />
+  <div class="section" id="pysa">
+<h1>Pysa<a class="headerlink" href="#pysa" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="name">
+<h2>NAME<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p>pysa - Reverse Engineer Server Configurations</p>
+</div>
+<div class="section" id="synopsis">
+<h2>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<p><strong>pysa</strong> [ <strong>-hqps</strong> ] [ <strong>-m</strong> <em>module-name</em> ] [ <strong>-o</strong> <em>output-path</em>
+][<strong>-c</strong> <em>config-file-path</em>] [ <strong>-f</strong> <em>filter-config-path</em> ]</p>
+</div>
+<div class="section" id="description">
+<h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>pysa</strong> scans your system and reverse engineers its configurations for
+easy replication.</p>
+<p><strong>pysa</strong> is able to scan your system, looking for different resources to
+deploy and generates some &#8220;autoconf&#8221; tools script to deploy it later on
+another computer.</p>
+<p>See <a class="reference external" href="#resources">RESOURCES</a> section for complete list of managed
+resources.</p>
+<p><strong>pysa</strong> is able to generates the configuration in Puppet (see
+<a class="reference external" href="http://docs.puppetlabs.com/references/latest/type.html">Puppet</a>
+documentation) or SaltStack (see
+<a class="reference external" href="http://salt.readthedocs.org/en/latest/contents.html">SaltStack</a>
+documentation) format.</p>
+</div>
+<div class="section" id="options">
+<h2>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="options-list">
+<h3>Options list<a class="headerlink" href="#options-list" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="h-help">
+<h4>-h, &#8211;help<a class="headerlink" href="#h-help" title="Permalink to this headline">¶</a></h4>
+<p>Display the short help.</p>
+</div>
+<div class="section" id="q-quiet">
+<h4>-q, &#8211;quiet<a class="headerlink" href="#q-quiet" title="Permalink to this headline">¶</a></h4>
+<p>Activate quiet mode and displays only error messages. By default,
+<strong>pysa</strong> displays all log messages.</p>
+</div>
+<div class="section" id="p-puppet">
+<h4>-p, &#8211;puppet<a class="headerlink" href="#p-puppet" title="Permalink to this headline">¶</a></h4>
+<p>Generates Puppet output.</p>
+</div>
+<div class="section" id="s-salt">
+<h4>-s, &#8211;salt<a class="headerlink" href="#s-salt" title="Permalink to this headline">¶</a></h4>
+<p>Generates SaltStack output.</p>
+</div>
+<div class="section" id="m-module-name-module-module-name">
+<h4>-m module-name, &#8211;module module-name<a class="headerlink" href="#m-module-name-module-module-name" title="Permalink to this headline">¶</a></h4>
+<p>Choose output module name. Default value: <em>pysa</em></p>
+</div>
+<div class="section" id="c-config-file-path-config-config-file-path">
+<h4>-c config-file-path, &#8211;config config-file-path<a class="headerlink" href="#c-config-file-path-config-config-file-path" title="Permalink to this headline">¶</a></h4>
+<p>Specify a configuration file. See examples file for more details
+<em>pysa.cfg</em></p>
+</div>
+<div class="section" id="o-output-path-output-output-path">
+<h4>-o output-path, &#8211;output output-path<a class="headerlink" href="#o-output-path-output-output-path" title="Permalink to this headline">¶</a></h4>
+<p>Choose the output filter for generated scripts. Default value: <em>output</em></p>
+</div>
+<div class="section" id="f-filter-config-path-filter-filter-config-path">
+<h4>-f filter-config-path, &#8211;filter filter-config-path<a class="headerlink" href="#f-filter-config-path-filter-filter-config-path" title="Permalink to this headline">¶</a></h4>
+<p>Specify a filter configuration file. See FILTERS_ section for more
+details.</p>
+</div>
+</div>
+</div>
+<div class="section" id="replication">
+<h2>REPLICATION<a class="headerlink" href="#replication" title="Permalink to this headline">¶</a></h2>
+<p><strong>pysa</strong> generates a puppet module containing several configuration
+scripts.</p>
+<p>There are two ways to use <strong>pysa</strong> &#8216;s output:</p>
+<ul class="simple">
+<li>You can manually configure the configuration manager and add <strong>pysa</strong>
+&#8216;s module to it</li>
+<li>If you&#8217;re using Puppet module, you can use the <em>pysa2puppet</em> script
+to deploy a complete and standalone setup. The script is interactive
+and will ask you all necessaries info (see usage first). A SaltStack
+version will be published soon.</li>
+</ul>
+</div>
+<div class="section" id="resources">
+<h2>RESOURCES<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<p>This section describes all the resources scanned by <strong>pysa</strong></p>
+<p>By default, all item described are scanned. However, you can apply some
+filters to avoid or specify some. See the <a class="reference external" href="#filters">FILTERS</a>
+section.</p>
+<p>At the current state, the resources objects and keys are similar to
+Puppet types. Jump to <em>pysa/scanner/object/</em> for a compelte object
+description. These objects will be documented soon.</p>
+<p>Please see <a class="reference external" href="#autoconf-tools-modules">AUTOCONF TOOLS MODULES</a> section
+to be sure to be able to handle all scanned resources.</p>
+<p>Pleese note that in main cases, the scan must be done by an admin user
+(mostly root).</p>
+<div class="section" id="configuration-files-file">
+<h3>configuration files - file<a class="headerlink" href="#configuration-files-file" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans (and stores in output module) all files located in a
+specific location. Default <strong>/etc</strong> and <strong>/root/.ssh</strong></p>
+<p>Primary key: <em>path</em></p>
+</div>
+<div class="section" id="packages-package">
+<h3>packages - package<a class="headerlink" href="#packages-package" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> is able to scan all packages provided by <em>yum</em>, <em>apt-get</em>,
+python pypi (<em>pip</em>), ruby <em>gems</em>, nodejs packaged modules (<em>npm</em>) and
+php packages managers (<em>pear</em> and <em>pecl</em>).</p>
+<p>Furthermore, <strong>pysa</strong> is able to detect repositories <em>rpm</em> packages if
+<em>yum</em> is not present.</p>
+<p>Primary key: <em>name</em></p>
+</div>
+<div class="section" id="services-service">
+<h3>services - service<a class="headerlink" href="#services-service" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> detects all startup services managed by <em>upstart</em> and <em>SysV
+init</em> scripts.</p>
+<p>Please see <a class="reference external" href="#notes">NOTES</a> section.</p>
+<p>Primary key: <em>name</em></p>
+</div>
+<div class="section" id="hosts-host">
+<h3>hosts - host<a class="headerlink" href="#hosts-host" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans and reproduces existing hostname associations (default
+<em>/etc/hosts</em>).</p>
+<p>Primary key: <em>name</em></p>
+</div>
+<div class="section" id="users-user">
+<h3>users - user<a class="headerlink" href="#users-user" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans and reproduces existing users (<em>/etc/passwd</em>).</p>
+<p>Primary key: <em>name</em></p>
+</div>
+<div class="section" id="groups-group">
+<h3>groups - group<a class="headerlink" href="#groups-group" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans and reproduces existing groups (<em>/etc/groups</em>).</p>
+<p>Primary key: <em>name</em></p>
+</div>
+<div class="section" id="mounts-mount">
+<h3>mounts - mount<a class="headerlink" href="#mounts-mount" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans and reproduces existing mount points (<em>/etc/fstab</em>).</p>
+<p>Primary key: <em>device</em></p>
+</div>
+<div class="section" id="crons-cron">
+<h3>crons - cron<a class="headerlink" href="#crons-cron" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans and reproduces user&#8217;s crons.</p>
+<p>Primary key: <em>name</em></p>
+</div>
+<div class="section" id="ssh-keys-key">
+<h3>ssh keys - key<a class="headerlink" href="#ssh-keys-key" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans and reproduces root SSH keys (default <em>/root/.ssh</em>).</p>
+<p>SSH keys are manages as files.</p>
+<p>Primary key: <em>name</em></p>
+</div>
+<div class="section" id="sources-repositories-source">
+<h3>sources repositories - source<a class="headerlink" href="#sources-repositories-source" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> is able to recognize all source repositories managed by the
+most common SCM (<em>subversion</em>, <em>git</em> and <em>mercurial</em>) present in the
+system.</p>
+<p>Primary key: <em>path</em></p>
+<p><strong>Puppet only</strong> The sources scanner is not able to scan sources
+repositories for SaltStack yet.</p>
+</div>
+<div class="section" id="package-managers-repositories-repository">
+<h3>package managers repositories - repository<a class="headerlink" href="#package-managers-repositories-repository" title="Permalink to this headline">¶</a></h3>
+<p><strong>pysa</strong> scans and reproduces <em>yum</em> and <em>apt-get</em> repositories.</p>
+<p>Primary key: <em>name</em></p>
+</div>
+</div>
+<div class="section" id="autoconf-tools-modules">
+<h2>AUTOCONF TOOLS MODULES<a class="headerlink" href="#autoconf-tools-modules" title="Permalink to this headline">¶</a></h2>
+<p>This section lists the autoconf tools&#8217; modules which may be used.</p>
+<p>Modules are used for particular features and are only needed in some
+particular cases. Of course, modules (as with the autoconf tools) have
+to be installed on the new machine, not the original one.</p>
+<div class="section" id="puppet-modules">
+<h3>Puppet modules<a class="headerlink" href="#puppet-modules" title="Permalink to this headline">¶</a></h3>
+<p>willdurand/nodejs: add <em>npm</em> package manager support nodes/php: add
+<em>php</em> package manager support puppetlabs/vcsrepo: add <em>scm</em> (sources)
+support</p>
+<p>to install a Puppet module: puppet module install <em>module-name</em></p>
+</div>
+</div>
+<div class="section" id="filters">
+<h2>FILTERS<a class="headerlink" href="#filters" title="Permalink to this headline">¶</a></h2>
+<p><strong>pysa</strong> integrates a powerful filters engine, which allows you to adapt
+its behavior to your needs.</p>
+<p>A filter file is composed of sections, keys and values. In some specific
+cases sections and/or keys can be split using a &#8216;.&#8217; (see below for more
+details).</p>
+<p>A key can be tagged with &#8216;_&#8217; at the front to be considered as &#8220;action&#8221;
+key. An action key is a key representing a specific action in the
+section (see below).</p>
+<p>If some parameters conflict then the result may be harmful, please use
+it carefully. Don&#8217;t hesitate to report any abnormal output to us.</p>
+<p>Some improvements are planned in this section.</p>
+<div class="section" id="common-action-keys">
+<h3>common action keys<a class="headerlink" href="#common-action-keys" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="contentrefer">
+<h4>_contentrefer<a class="headerlink" href="#contentrefer" title="Permalink to this headline">¶</a></h4>
+<p>This key acts as a pointer. All the content of the referred section will
+be interpreted in the section.</p>
+<p>This key should be set alone, as all keys will be replaced.</p>
+</div>
+</div>
+<div class="section" id="addition-section">
+<h3>addition section<a class="headerlink" href="#addition-section" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="addition-section-description">
+<h4>addition section description<a class="headerlink" href="#addition-section-description" title="Permalink to this headline">¶</a></h4>
+<p>This section is used to add or modify some values.</p>
+<p>It can sounds similar to the replace section, but works in a completely
+different way:</p>
+<ul class="simple">
+<li>The key is based on section key instead of content to replace</li>
+<li>It is replaced at the scanning step, while the <em>replacement</em> section
+is done at the output generation step</li>
+</ul>
+<p>Remember that <em>addition</em> is used to add/set a concrete parameter, while
+<em>replace</em> is used to replace some content.</p>
+<p>The section name can be separate in multiple subsections using a dot
+&#8216;.&#8217;, always starting by <em>addition</em> keyword:</p>
+<ul class="simple">
+<li>addition.resource_type will replace values for all objects of
+resource_type</li>
+<li>addition.resource_type.key.value will replace only the values for
+the objects where the key/value match the requirement</li>
+</ul>
+<p>The key represents the resource key. The value represents the resource
+value.</p>
+</div>
+<div class="section" id="addition-section-format">
+<h4>addition section format<a class="headerlink" href="#addition-section-format" title="Permalink to this headline">¶</a></h4>
+<p>section_key = section_value</p>
+</div>
+<div class="section" id="addition-section-action-keys">
+<h4>addition section action keys<a class="headerlink" href="#addition-section-action-keys" title="Permalink to this headline">¶</a></h4>
+<p>No action key for this section.</p>
+</div>
+</div>
+<div class="section" id="discard-section">
+<h3>discard section<a class="headerlink" href="#discard-section" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="discard-section-description">
+<h4>discard section description<a class="headerlink" href="#discard-section-description" title="Permalink to this headline">¶</a></h4>
+<p>This section is used to specify which object should or shouldn&#8217;t be
+discard.</p>
+<p>The key is separated in to two sub-keys by a dot &#8216;.&#8217;, which represents
+the object type for the first one and the attribute name for the second
+one.</p>
+<p>The values can be seen as a list of attributes separated by a coma &#8216;,&#8217;.</p>
+<p>The joker &#8216;*&#8217; can be used to specify to match all characters.</p>
+</div>
+<div class="section" id="discard-section-format">
+<h4>discard section format<a class="headerlink" href="#discard-section-format" title="Permalink to this headline">¶</a></h4>
+<p>object.attribute_name = attribute1, attribute2*, ...</p>
+</div>
+<div class="section" id="discard-section-action-keys">
+<h4>discard section action keys<a class="headerlink" href="#discard-section-action-keys" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>_resources:</dt>
+<dd>resource names Select which resources to be scanned, use it
+carefully, some resources might depend on others.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="replace-section">
+<h3>replace section<a class="headerlink" href="#replace-section" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="replace-section-description">
+<h4>replace section description<a class="headerlink" href="#replace-section-description" title="Permalink to this headline">¶</a></h4>
+<p>This section is used to replace any kind of content.</p>
+<p>The section name can be separated into multiple subsections using a dot
+&#8216;.&#8217;, always starting by <em>replace</em> keyword:</p>
+<ul class="simple">
+<li>replace will replace all values for all objects.</li>
+<li>replace.object will replace all values for the selected object.</li>
+<li>replace.object.field will replace only the values associated with the
+field in the selected object.</li>
+</ul>
+<p>The key represents the new value. The value(s) represents the target to
+replace.</p>
+</div>
+<div class="section" id="replace-section-format">
+<h4>replace section format<a class="headerlink" href="#replace-section-format" title="Permalink to this headline">¶</a></h4>
+<p>new_value = old_value1, old_value2, ...</p>
+</div>
+<div class="section" id="replace-section-action-keys">
+<h4>replace section action keys<a class="headerlink" href="#replace-section-action-keys" title="Permalink to this headline">¶</a></h4>
+<p>_replaceall:</p>
+<ul class="simple">
+<li>true/false</li>
+<li>REQUIRED</li>
+<li>Select the filtering mode (replace all except -true- or replace none
+except -false-)</li>
+<li>default: true _except: primary_keys_values</li>
+</ul>
+</div>
+</div>
+<div class="section" id="update-section">
+<h3>update section<a class="headerlink" href="#update-section" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="update-section-description">
+<h4>update section description<a class="headerlink" href="#update-section-description" title="Permalink to this headline">¶</a></h4>
+<p>This section is used to specify which <em>package</em> should be updated. This
+section has been created due to the lack of old packages in many
+repositories.</p>
+<p>A list of package names is specified as values of the <em>except</em> key,
+separated by a coma &#8216;,&#8217;.</p>
+<p>The joker &#8216;*&#8217; can be used to specify to match all characters.</p>
+</div>
+<div class="section" id="update-section-format">
+<h4>update section format<a class="headerlink" href="#update-section-format" title="Permalink to this headline">¶</a></h4>
+<p>except = package1, package2*, *package3, *package4*, ...</p>
+</div>
+<div class="section" id="update-section-action-keys">
+<h4>update section action keys<a class="headerlink" href="#update-section-action-keys" title="Permalink to this headline">¶</a></h4>
+<p>_update:</p>
+<ul class="simple">
+<li>true/false</li>
+<li>REQUIRED</li>
+<li>Select the filtering mode (update all except -true- or update none
+except -false-)</li>
+<li>default: false</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="usage-examples">
+<h2>USAGE EXAMPLES<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
+<p>See <em>docs/examples</em> for configuration file examples.</p>
+</div>
+<div class="section" id="notes">
+<h2>NOTES<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p><strong>pysa</strong> has been inspired by a software called <em>Blueprint</em> (more
+information at <a class="reference external" href="http://devstructure.com/blueprint/">http://devstructure.com/blueprint/</a>).</p>
+<p>The force of <strong>pysa</strong> lies on the following points:</p>
+<ul class="simple">
+<li><strong>pysa</strong>&#8216;s &#8220;filters&#8221; and <em>Blueprint</em>&#8216;s &#8220;rules&#8221; are totally different.
+Please refer to the documentations for more details.</li>
+<li><strong>pysa</strong>&#8216;s <em>Puppet</em> output is cleaner (the files are separated, the
+module is automatically created...).</li>
+<li>The dependency cycle is more resilient. <strong>pysa</strong> generates an
+attribute-based dependency cycle (each object relies and depends on
+its own dependencies) so if something fails the whole process isn&#8217;t
+stopped.</li>
+<li><strong>pysa</strong> is under active development and there is additional
+functionality under development (e.g., integration to <em>Madeira</em>&#8216;s
+services, <em>Salt</em>/<em>Chef</em> modules).</li>
+</ul>
+<p>As an early-release, <strong>pysa</strong> does not (always) provide 100% functional
+results. This comes, in some cases, from the architectural choices that
+we&#8217;ve made. For example, <strong>pysa</strong> does not (yet) support the addition of
+user&#8217;s packages, simply because we can&#8217;t ensure the availability of
+these packages on the new system. It would lead to the generation of
+wrong output files.</p>
+<p>Furthermore, <strong>pysa</strong> depends on &#8220;autoconf&#8221; tools. This means that if a
+feature is not supported by one of these tools, <strong>pysa</strong> can&#8217;t provide
+it. For example, it is currently impossible to use upstart services on a
+<em>Redhat</em> based platform, as it is impossible to use npm package manager
+on <em>Ubuntu</em>.</p>
+<p>Please don&#8217;t hesitate to contact us for any kind of feedback, advice or
+requirement: <a class="reference external" href="mailto:pysa-user&#37;&#52;&#48;googlegroups&#46;com">pysa-user<span>&#64;</span>googlegroups<span>&#46;</span>com</a> for public discussions and
+<a class="reference external" href="mailto:pysa&#37;&#52;&#48;mc2&#46;io">pysa<span>&#64;</span>mc2<span>&#46;</span>io</a> for private messages.</p>
+<p>If you have a question about a specific source file, you can also
+contact the author directly (<a class="reference external" href="mailto:first-name&#37;&#52;&#48;mc2&#46;io">first-name<span>&#64;</span>mc2<span>&#46;</span>io</a>)</p>
+</div>
+<div class="section" id="bugs">
+<h2>BUGS<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
+<p>No known bugs.</p>
 </div>
 </div>
 
@@ -73,6 +427,83 @@
               <p class="logo"><a href="default.html">
                 <img class="logo" src="_static/logo.png" alt="Logo"/>
               </a></p>
+  <h3><a href="default.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Pysa</a><ul>
+<li><a class="reference internal" href="#name">NAME</a></li>
+<li><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
+<li><a class="reference internal" href="#description">DESCRIPTION</a></li>
+<li><a class="reference internal" href="#options">OPTIONS</a><ul>
+<li><a class="reference internal" href="#options-list">Options list</a><ul>
+<li><a class="reference internal" href="#h-help">-h, &#8211;help</a></li>
+<li><a class="reference internal" href="#q-quiet">-q, &#8211;quiet</a></li>
+<li><a class="reference internal" href="#p-puppet">-p, &#8211;puppet</a></li>
+<li><a class="reference internal" href="#s-salt">-s, &#8211;salt</a></li>
+<li><a class="reference internal" href="#m-module-name-module-module-name">-m module-name, &#8211;module module-name</a></li>
+<li><a class="reference internal" href="#c-config-file-path-config-config-file-path">-c config-file-path, &#8211;config config-file-path</a></li>
+<li><a class="reference internal" href="#o-output-path-output-output-path">-o output-path, &#8211;output output-path</a></li>
+<li><a class="reference internal" href="#f-filter-config-path-filter-filter-config-path">-f filter-config-path, &#8211;filter filter-config-path</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#replication">REPLICATION</a></li>
+<li><a class="reference internal" href="#resources">RESOURCES</a><ul>
+<li><a class="reference internal" href="#configuration-files-file">configuration files - file</a></li>
+<li><a class="reference internal" href="#packages-package">packages - package</a></li>
+<li><a class="reference internal" href="#services-service">services - service</a></li>
+<li><a class="reference internal" href="#hosts-host">hosts - host</a></li>
+<li><a class="reference internal" href="#users-user">users - user</a></li>
+<li><a class="reference internal" href="#groups-group">groups - group</a></li>
+<li><a class="reference internal" href="#mounts-mount">mounts - mount</a></li>
+<li><a class="reference internal" href="#crons-cron">crons - cron</a></li>
+<li><a class="reference internal" href="#ssh-keys-key">ssh keys - key</a></li>
+<li><a class="reference internal" href="#sources-repositories-source">sources repositories - source</a></li>
+<li><a class="reference internal" href="#package-managers-repositories-repository">package managers repositories - repository</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#autoconf-tools-modules">AUTOCONF TOOLS MODULES</a><ul>
+<li><a class="reference internal" href="#puppet-modules">Puppet modules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#filters">FILTERS</a><ul>
+<li><a class="reference internal" href="#common-action-keys">common action keys</a><ul>
+<li><a class="reference internal" href="#contentrefer">_contentrefer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#addition-section">addition section</a><ul>
+<li><a class="reference internal" href="#addition-section-description">addition section description</a></li>
+<li><a class="reference internal" href="#addition-section-format">addition section format</a></li>
+<li><a class="reference internal" href="#addition-section-action-keys">addition section action keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#discard-section">discard section</a><ul>
+<li><a class="reference internal" href="#discard-section-description">discard section description</a></li>
+<li><a class="reference internal" href="#discard-section-format">discard section format</a></li>
+<li><a class="reference internal" href="#discard-section-action-keys">discard section action keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#replace-section">replace section</a><ul>
+<li><a class="reference internal" href="#replace-section-description">replace section description</a></li>
+<li><a class="reference internal" href="#replace-section-format">replace section format</a></li>
+<li><a class="reference internal" href="#replace-section-action-keys">replace section action keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#update-section">update section</a><ul>
+<li><a class="reference internal" href="#update-section-description">update section description</a></li>
+<li><a class="reference internal" href="#update-section-format">update section format</a></li>
+<li><a class="reference internal" href="#update-section-action-keys">update section action keys</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-examples">USAGE EXAMPLES</a></li>
+<li><a class="reference internal" href="#notes">NOTES</a></li>
+<li><a class="reference internal" href="#bugs">BUGS</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="default.html"
                         title="previous chapter">Madeira Cloud Documentation</a></p>
@@ -108,7 +539,7 @@
           <li class="right" >
             <a href="default.html" title="Madeira Cloud Documentation"
                >previous</a> |</li>
-          <li><a href="default.html">MadeiraCloud Document 1.0.0 documentation</a> &raquo;</li> 
+          <li><a href="default.html">Pysa 0.2.6a documentation</a> &raquo;</li> 
         </ul>
       -->
     </div>
