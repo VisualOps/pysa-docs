@@ -56,15 +56,15 @@ page:
 
 commit:
 	-git add -A
-	-git ca --no-edit -m "Robot: Auto Deploy"
+	-git commit -a --no-edit -m "Robot: Auto Deploy"
 
 autocommit:
 	-git add -A
-	-git ca --no-edit -m "Robot: Auto Deploy"
+	-git commit -a --no-edit -m "Robot: Auto Deploy"
 
 deploy: page autocommit
 	git push origin gh-pages
-	git co master
+	git checkout master
 	@echo
 	@echo "==========================================================="
 	@echo "    GitHub Pages has been Deployed!!!"
