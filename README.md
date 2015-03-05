@@ -1,4 +1,5 @@
-MadeiraCloud Pysa Documents
+Pysa Documents
+
 ========
 ## Edit 
 Our document is writed by Markdown so you can edit it by Mou or anyother Markdown Editor.
@@ -30,5 +31,5 @@ Run `make deploy` to deploy project on [ReadTheDocs](http://madeira-cloud-pysa-d
 
 ## Links
 
-- [Pysa Project Page](http://madeiracloud.github.io/pysa/)
+- [Pysa Project Page](http://visualops.github.io/pysa/)
 - [Document on ReadtheDocs](http://madeira-cloud-pysa-document.readthedocs.org/en/latest/)
